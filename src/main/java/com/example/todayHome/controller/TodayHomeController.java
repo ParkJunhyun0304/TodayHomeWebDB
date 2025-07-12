@@ -22,13 +22,13 @@ public class TodayHomeController {
         return todayHomeService.fetchTodayHome();
     }
 
-    @PutMapping("/departments/{id}")
+    @PutMapping("/todayHome/{id}")
     public TodayHome
     updateTodayHome(@PathVariable int id, @RequestBody TodayHome todayHome) {
         return todayHomeService.updateTodayHome(todayHome, id);
     }
 
-    @DeleteMapping("/departments/{id}")
+    @DeleteMapping("/todayHome/{id}")
     public String deleteTodayHome(@PathVariable int id) {
         todayHomeService.deleteTodayHome(id);
         return "Delete Success";
