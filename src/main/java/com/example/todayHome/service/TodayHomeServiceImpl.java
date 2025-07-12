@@ -21,7 +21,7 @@ public class TodayHomeServiceImpl implements TodayHomeService {
 
     @Override
     public List<TodayHome> fetchTodayHome() {
-        return List.of((TodayHome) todayHomeRepository.findAll());
+        return (List<TodayHome>) todayHomeRepository.findAll();
     }
 
     @Override
@@ -32,12 +32,14 @@ public class TodayHomeServiceImpl implements TodayHomeService {
             return null;
         }
 
-        fixedTodayHome.setName(todayHome.getName());
-        fixedTodayHome.setPrice(todayHome.getPrice());
-        fixedTodayHome.setCategory(todayHome.getCategory());
-        fixedTodayHome.setWidth(todayHome.getWidth());
-        fixedTodayHome.setDepth(todayHome.getDepth());
-        fixedTodayHome.setHeight(todayHome.getHeight());
+        fixedTodayHome.setUpdate(
+                todayHome.getName(),
+                todayHome.getPrice(),
+                todayHome.getCategory(),
+                todayHome.getWidth(),
+                todayHome.getDepth(),
+                todayHome.getHeight()
+        );
 
         return todayHomeRepository.save(fixedTodayHome);
     }
